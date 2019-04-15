@@ -1,13 +1,13 @@
 const db = require('../../data/dbConfig.js');
 
 module.exports = {
-    getTrips,
+    getUserTrips,
     addTrips
 }
 
 
-function getTrips() {
-    return db('Trips')
+function getUserTrips() {
+    return db('Trips').select('user_id');
 }
 
 function addTrips(action) {
