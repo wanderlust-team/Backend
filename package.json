@@ -12,10 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-<<<<<<< HEAD
-=======
     "cors": "^2.8.5",
->>>>>>> 76117d675ef8b836b9aa15197ceb86f894b22713
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "helmet": "^3.16.0",
