@@ -1,7 +1,7 @@
 // Update with your config settings.
 const localPg = {
   host: 'localhost',
-  database: 'hobbits',
+  database: 'wanderLust',
   user: 'student',
   password: 'hired',
 };
