@@ -8,20 +8,21 @@ module.exports = {
 };
 
 function authenticate(req, res, next) {
-  const token = req.get("Authorization");
+  const token = req.headers.authorization;
 
-  if(token) {
-    jwt.verify(token, secrets.jwtSecret, (err, decoded) => {
-      if(err) return res.status(401),json(err);
+  if (token) {
+    jwt.verify(token, secrets.jwtSecret, (error, decodedToken) => {
+      if (error) {
+        // the token is not valid
+        res.status(401).json({ message: 'Invalid Credentials' });
+      } else {
+        req.decodedJwt = decodedToken;
 
-      req.decoded = decoded ;
-
-      next();
+        next();
+      }
     });
   } else {
-    return res.status(401).json({
-      error: "No token provided, must be set on Auth Header"
-    });
+    res.status(401).json({ message: 'No token provided' });
   }
 }
 
@@ -33,5 +34,5 @@ function generateToken(user) {
   const options = {
     expiresIn: "1d"
   };
-  return jwt.sign(payload, jwtKey, options);
+  return jwt.sign(payload, secrets.jwtSecret, options);
 }
