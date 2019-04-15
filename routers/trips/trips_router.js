@@ -6,7 +6,7 @@ const Trips = require('./trips_model.js');
 
 router.get('/', async (req, res) => {
     try {
-        const trips = await Trips.getTrips(req)
+        const trips = await Trips.getUserTrips(req)
         res.status(200).json(trips);
     } catch (error) {
         res.status(500).json({
