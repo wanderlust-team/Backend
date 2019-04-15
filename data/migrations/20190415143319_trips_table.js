@@ -12,7 +12,7 @@ exports.up = function(knex) {
         .unsigned()
         .notNullable()
         .references('id')
-        .inTable('authentication')
+        .inTable('users')
         .onDelete('CASCADE')
         .onUpdate('CASCADE')
   })
