@@ -1,9 +1,9 @@
-exports.seed = function (knex, Promise) {
+exports.seed = function (knex, Promise){
   // Deletes ALL existing entries
-  return knex("trips")
+  return knex("Trips")
     .then(function () {
       // Inserts seed entries
-      return knex("trips").insert([
+      return knex("Trips").insert([
         {
           tripName: "Hiking In The Jungle",
           location: "Panama",
