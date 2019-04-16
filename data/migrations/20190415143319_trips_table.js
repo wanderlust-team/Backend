@@ -4,17 +4,16 @@ exports.up = function (knex) {
     tbl.increments();
 
     tbl
-      .string('name')
+      .string('tripName')
       .notNullable();
 
-    tbl
-      .integer('user_id')
-      .unsigned()
-      .notNullable()
-      .references('id')
-      .inTable('users')
-      .onDelete('CASCADE')
-      .onUpdate('CASCADE');
+    // tbl
+    //   .integer('userId')
+    //   .unsigned()
+    //   .references('id')
+    //   .inTable('users')
+    //   .onDelete('CASCADE')
+    //   .onUpdate('CASCADE');
 
     tbl
       .string('location', 128)
