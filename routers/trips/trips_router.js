@@ -34,18 +34,18 @@ router.get('/:id', async (req, res) => {
 
 
 //get user's trips
-router.get('/user/:id', async (req, res) => {
-    const {id} = req.params;
+// router.get('/user/:id', async (req, res) => {
+//     const {id} = req.params;
 
-    try {
-        const trips = await Trips.getUserTrips(id)
-        res.status(200).json(trips);
-    } catch (error) {
-        res.status(500).json({
-            message: 'Error retrieving user trip experience'
-        })
-    }
-})
+//     try {
+//         const trips = await Trips.getUserTrips(id)
+//         res.status(200).json(trips);
+//     } catch (error) {
+//         res.status(500).json({
+//             message: 'Error retrieving user trip experience'
+//         })
+//     }
+// })
 
 //POST endpoints 
 
