@@ -7,13 +7,13 @@ exports.up = function (knex) {
       .string('tripName')
       .notNullable();
 
-    // tbl
-    //   .integer('userId')
-    //   .unsigned()
-    //   .references('id')
-    //   .inTable('users')
-    //   .onDelete('CASCADE')
-    //   .onUpdate('CASCADE');
+    tbl
+      .integer('userId')
+      .unsigned()
+      .references('id')
+      .inTable('users')
+      .onDelete('CASCADE')
+      .onUpdate('CASCADE');
 
     tbl
       .string('location', 128)
