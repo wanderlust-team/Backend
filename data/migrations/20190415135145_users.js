@@ -5,7 +5,8 @@ exports.up = function (knex) {
 
     users
       .string('username', 255)
-      .notNullable();
+      .notNullable()
+      .unique();
     users.string('password', 255).notNullable();
     users.string('email', 128).notNullable();
     users.string("userType", 128).notNullable();
