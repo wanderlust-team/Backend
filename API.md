@@ -1,5 +1,3 @@
-# Backend
-
 ### API Documentation
 
 
@@ -41,3 +39,5 @@ URL = http://localhost:5000/api/trips
 | POST   | `/`                             | all users           | Users can add their trips.                         |
 | PUT    | `/:id`                          | all users           | Users can update their experiences.                | 
 | DELETE | `/:id`                          | all users           | User can delete their own experiences .            |
+ 
+
