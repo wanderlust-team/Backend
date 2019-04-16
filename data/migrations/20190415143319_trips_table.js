@@ -9,6 +9,7 @@ exports.up = function (knex) {
 
     tbl
       .integer('userId')
+      .notNullable()
       .unsigned()
       .references('id')
       .inTable('users')
