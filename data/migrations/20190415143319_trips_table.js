@@ -31,11 +31,6 @@ exports.up = function (knex) {
   })
 };
 
-<<<<<<< HEAD
-exports.down = function(knex) {
-  return knex.schema.dropTableIfExists('Trips');
-=======
 exports.down = function (knex, Promise) {
   return knex.schema.dropTableIfExists('trips');
->>>>>>> 7077e9e4ace33fc785a91423bd9a708a938309ed
 };
