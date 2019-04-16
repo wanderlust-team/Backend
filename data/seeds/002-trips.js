@@ -8,15 +8,15 @@ exports.seed = function (knex, Promise) {
           tripName: "Hiking In The Jungle",
           location: "Panama",
           description: "Come join us on an amazing adventure through the Chagras jungle!",
-          startDate: 2019 / 04 / 16,
-          endDate: 2019 / 04 / 18,
+          startDate: 20190416,
+          endDate: 20190418
         },
         {
           tripName: "Swim On The Nile",
           location: "Egypt",
           description: "Ever wanted to swim on the longest river? Now is your chance!",
-          startDate: 2019 / 04 / 16,
-          endDate: 2019 / 04 / 18,
+          startDate: 20190416,
+          endDate: 20190418
         }
       ]);
     });
