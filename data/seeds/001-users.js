@@ -1,8 +1,6 @@
 exports.seed = function(knex, Promise) {
+  // Have knex-cleaner do not need truncate.
   // Deletes ALL existing entries and resets ids
-  return knex("users")
-    .truncate()
-    .then(function() {
       return knex("users").insert([
         {
           username: "Erick",
@@ -15,5 +13,5 @@ exports.seed = function(knex, Promise) {
           userType: "Tourist",
         }
       ]);
-    });
+  
 };
