@@ -1,20 +1,16 @@
 ### API Documentation
 
 
-#### Organization Routes
+
+
+
+#### Registration Routes
+
+URL = http://localhost:5000/api/authya
 
 | Method | Endpoint                        | Access Control      | Description                                        |
 |--------|---------------------------------|---------------------|----------------------------------------------------|
-| GET    | `/organizations/:orgId`         | all users           | Returns the information for an organization.       |
-| PUT    | `/organizatoins/:orgId`         | owners              | Modify an existing organization.                   |
-| DELETE | `/organizations/:orgId`         | owners              | Delete an organization.                            |
-
-
-#### User Routes
-
-| Method | Endpoint                        | Access Control      | Description                                        |
-|--------|---------------------------------|---------------------|----------------------------------------------------|
-| GET    | `/users/current`                | all users           | Returns info for the logged in user.               |
+| GET    | `/users/`                | all users           | Returns info for the logged in user.               |
 | GET    | `/users/org/:userId`            | owners, supervisors | Returns all users for an organization.             |
 | GET    | `/users/:userId`                | owners, supervisors | Returns info for a single user.                    |
 | POST   | `/users/register/owner`         | none                | Creates a new user as owner of a new organization. |
