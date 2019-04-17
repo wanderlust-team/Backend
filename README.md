@@ -8,7 +8,7 @@
 
 #### Registration Routes
 
-URL = http://localhost:5000/api/auth
+URL = https://build-week-wanderlust.herokuapp.com/api/auth
 
 | Method | Endpoint                        | Access Control      | Description                                        |
 |--------|---------------------------------|---------------------|----------------------------------------------------|
@@ -20,7 +20,7 @@ URL = http://localhost:5000/api/auth
 
 #### Users Routes
 
-URL = http://localhost:5000/api/users
+URL = https://build-week-wanderlust.herokuapp.com/api/users
 
 
 | Method | Endpoint                        | Access Control      | Description                                        |
@@ -31,7 +31,7 @@ URL = http://localhost:5000/api/users
 
 #### Trip Routes
 
-URL = http://localhost:5000/api/trips
+URL = https://build-week-wanderlust.herokuapp.com/api/trips
 
 
 | Method | Endpoint                        | Access Control      | Description                                        |
