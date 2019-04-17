@@ -14,7 +14,7 @@ router.post("/register", (req, res) => {
       const token = generateToken.generateToken(user);
       res
         .status(201)
-        .json({ message: "User successfully registered to database." , token});
+        .json({ message: "User successfully registered to database." , token, user: saved.id});
     })
     .catch(error => {
       res
