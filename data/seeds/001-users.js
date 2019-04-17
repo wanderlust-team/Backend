@@ -1,7 +1,7 @@
-exports.seed = function (knex, Promise){
+const faker = require('faker');
+exports.seed = function (knex, Promise) {
   // Deletes ALL existing entries
   return knex("users")
-    .truncate()
     .then(function () {
       // Inserts seed entries
       return knex("users").insert([
@@ -9,14 +9,38 @@ exports.seed = function (knex, Promise){
           username: "Erick",
           password: "password",
           email: "email@email.net",
-          userType: "Organizer",
+          guide: true,
         },
         {
           username: "Jor",
           password: "password123",
           email: "email@email.org",
-          userType: "Tourist",
-        }
+          guide: true,
+        },
+        {
+          username: faker.internet.userName(),
+          password: faker.internet.password(),
+          email: faker.internet.email(),
+          guide: faker.random.boolean(),
+        },
+        {
+          username: faker.internet.userName(),
+          password: faker.internet.password(),
+          email: faker.internet.email(),
+          guide: faker.random.boolean(),
+        },
+        {
+          username: faker.internet.userName(),
+          password: faker.internet.password(),
+          email: faker.internet.email(),
+          guide: faker.random.boolean(),
+        },
+        {
+          username: faker.internet.userName(),
+          password: faker.internet.password(),
+          email: faker.internet.email(),
+          guide: faker.random.boolean(),
+        },
       ]);
     });
 };

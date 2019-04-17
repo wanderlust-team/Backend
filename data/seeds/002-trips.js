@@ -1,4 +1,5 @@
-exports.seed = function (knex, Promise){
+const faker = require('faker');
+exports.seed = function (knex, Promise) {
   // Deletes ALL existing entries
   return knex("Trips")
     .truncate()
@@ -20,7 +21,39 @@ exports.seed = function (knex, Promise){
           description: "Ever wanted to swim on the longest river? Now is your chance!",
           startDate: 20190416,
           endDate: 20190418
-        }
+        },
+        {
+          tripName: "Camping Under The Stars",
+          location: faker.address.country(),
+          userId: 4,
+          description: faker.lorem.paragraph(),
+          startDate: 20190416,
+          endDate: 20190418
+        },
+        {
+          tripName: "Hang Out and Chill Out",
+          location: faker.address.country(),
+          userId: 6,
+          description: faker.lorem.paragraph(),
+          startDate: 20190416,
+          endDate: 20190418
+        },
+        {
+          tripName: "Monkey Around",
+          location: faker.address.country(),
+          userId: 3,
+          description: faker.lorem.paragraph(),
+          startDate: 20190416,
+          endDate: 20190418
+        },
+        {
+          tripName: "Sightseeing While Seeing Sights",
+          location: faker.address.country(),
+          userId: 5,
+          description: faker.lorem.paragraph(),
+          startDate: 20190416,
+          endDate: 20190418
+        },
       ]);
     });
 };
