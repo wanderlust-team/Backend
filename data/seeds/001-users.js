@@ -1,5 +1,4 @@
-var faker = require('faker');
-
+const faker = require('faker');
 exports.seed = function (knex, Promise) {
   // Deletes ALL existing entries
   return knex("users")
