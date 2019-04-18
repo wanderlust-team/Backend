@@ -12,6 +12,7 @@ router.get('/', async (req, res) => {
         res.status(200).json(trips);
     } catch (error) {
         res.status(500).json({
+            error,
             message: 'Error retrieving trips experience'
         })
     }
@@ -27,7 +28,9 @@ router.get('/:id', async (req, res) => {
         res.status(200).json(trips);
     } catch (error) {
         res.status(500).json({
+            error,
             message: 'Error retrieving trip experience'
+            
         })
     }
 })
@@ -55,6 +58,7 @@ router.post('/', async (req, res) => {
         res.status(201).json(addTrip);
     } catch (error) {
         res.status(500).json({
+            error,
             Error: 'Error adding trip'
         })
     }
@@ -72,8 +76,9 @@ router.delete('/:id', async (req, res) => {
             res.status(404).json({error: 'Trip cannot be found'})
         }
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         res.status(500).json({
+            error,
             message: 'Error removing trip'
         })
     }
@@ -94,7 +99,9 @@ router.put('/:id', async (req, res) => {
       // log error to database
       console.log(error);
       res.status(500).json({
-        message: 'Error updating the user',
+        error,
+        message: 'Error updating the user'
+        
       });
     }
   });
