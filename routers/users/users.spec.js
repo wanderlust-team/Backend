@@ -1,3 +1,4 @@
+// const db = require('supertest');
 const db = require("../../data/dbConfig.js");
 const Users = require("./users-model.js");
 
@@ -13,18 +14,12 @@ describe("userModel.js", () => {
 
     it("should insert the provided user into the database", async () => {
       let user = await Users.add({
-        username: "Erick",
+        username: "Michael",
         password: "password",
-        userType: "guide"
+        email: "email@email.org",
+        guide: true
       });
-      expect(user.username).toBe("Erick");
-
-      user = await Users.add({
-        username: "Adam",
-        password: "kjahdlkfjhakdjh",
-        userType: "tourist"
-      });
-      expect(user.username).toBe("Adam");
+      expect(user.username).toBe("Michael");
     });
   });
 
@@ -34,15 +29,8 @@ describe("userModel.js", () => {
     });
 
     it("should find all users in the database", async () => {
-      let user = await Users.add({
-        username: "Jor",
-        password: "password",
-        userType: "guide"
-      });
-      expect(user.username).toBe("Jor");
-
       const games = await Users.find();
-      expect(games).toHaveLength(1);
+      expect(games).toHaveLength(7);
     });
   });
 });
