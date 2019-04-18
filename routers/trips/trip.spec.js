@@ -29,21 +29,64 @@ describe('server.js', () => {
             const response = await request(server).get('/trips');
 
             expect(response.body).toHaveLength(0)
-                // truncating makes it 0 
-            
         })
+
+        it('should retrun a list of trips', async () => {
+            trips.addTrips({tripName: 'Street Food Adventures', userId: 2 , location: 'Hong Kong',description: 'We will explore the cheap and delicious food from the streets of Mong Kok',startDate: 20190522,endDate: 20190529});
+            trips.addTrips({tripName: 'Street Food Adventures', userId: 1 , location: 'Tokyo', description: 'We will explore the cheap and delicious food from the streets of Shinjuku',startDate: 20190522,endDate: 20190529});
+            trips.addTrips({tripName: 'Street Food Adventures', userId: 2 , location: 'Taipei',description: 'We will explore the cheap and delicious food from the streets of Shi Lim',startDate: 20190522,endDate: 20190529});
+            trips.addTrips({tripName: 'Street Food Adventures', userId: 1 , location: 'Kuala Lumpar',description: 'We will explore the cheap and delicious food from the streets',startDate: 20190522,endDate: 20190529});
+            trips.addTrips({tripName: 'Street Food Adventures', userId: 2 , location: 'BangKok',description: 'We will explore the cheap and delicious food from the streets',startDate: 20190522,endDate: 20190529});
+
+
+            const response = await request(server).get('/trips');
+            
+            expect(response.body).toHaveLength(5)
+        })
+
     })
 
     describe('POST /trips', () => {
         it('should return status 201', async () => {
-            //const trip = ;
+            const trip = {
+                tripName: 'Street Food Adventures', 
+                userId: 2 , 
+                location: 'Hong Kong',
+                description: 'We will explore the cheap and delicious food from the streets of Mong Kok',
+                startDate: 20190522,
+                endDate: 20190529
+            };
       
             let response = await request(server)
               .post('/trips')
-              .send();
+              .send(trip);
             expect(response.status).toBe(201);
           });
+        
+        it('returns the new trip', async () => {
+            const trip = {
+                tripName: 'Street Food Adventures', 
+                userId: 2 , 
+                location: 'Hong Kong',
+                description: 'We will explore the cheap and delicious food from the streets of Mong Kok',
+                startDate: 20190522,
+                endDate: 20190529
+            };
 
+            let response = await request(server)
+                .post('/trips')
+                .send(trip);
+
+            expect(response.body).toEqual({
+                id: 1,
+                tripName: 'Street Food Adventures', 
+                userId: 2 , 
+                location: 'Hong Kong',
+                description: 'We will explore the cheap and delicious food from the streets of Mong Kok',
+                startDate: 20190522,
+                endDate: 20190529
+            })
+        })
 
     })
 })
