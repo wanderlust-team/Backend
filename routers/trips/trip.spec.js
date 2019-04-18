@@ -17,10 +17,23 @@ beforeAll((done) => {
       guide: true
     })
     .end((err, response) => {
-      token = response.body.token; // save the token!
+    //   token = response.body.token; // save the token!
       done();
     });
 });
+
+beforeAll((done) => {
+    request(server)
+      .post('/api/auth/login')
+      .send({
+        username: "Michael",
+        password: "password",
+      })
+      .end((err, response) => {
+       token = response.body.token; // save the token!
+        done();
+      });
+  });
 
 describe('trip_routers.js', () => {
     afterEach(async () => {
@@ -29,7 +42,7 @@ describe('trip_routers.js', () => {
 
     describe('GET /trips', () => {
         it('should respond with 200 OK', async () => {
-            const response = await request(server).get('/api/trips').set('Authorization', `${token}`);
+            const response = await request(server).get('/api/trips').set('Authorization',`${token}`);
             console.log(token)
             expect(response.status).toBe(200)
             
@@ -49,11 +62,11 @@ describe('trip_routers.js', () => {
         })
 
         it('should retrun a list of trips', async () => {
-            trips.addTrips({tripName: 'Street Food Adventures', userId: 2 , location: 'Hong Kong',description: 'We will explore the cheap and delicious food from the streets of Mong Kok',startDate: 20190522,endDate: 20190529});
-            trips.addTrips({tripName: 'Street Food Adventures', userId: 1 , location: 'Tokyo', description: 'We will explore the cheap and delicious food from the streets of Shinjuku',startDate: 20190522,endDate: 20190529});
-            trips.addTrips({tripName: 'Street Food Adventures', userId: 2 , location: 'Taipei',description: 'We will explore the cheap and delicious food from the streets of Shi Lim',startDate: 20190522,endDate: 20190529});
-            trips.addTrips({tripName: 'Street Food Adventures', userId: 1 , location: 'Kuala Lumpar',description: 'We will explore the cheap and delicious food from the streets',startDate: 20190522,endDate: 20190529});
-            trips.addTrips({tripName: 'Street Food Adventures', userId: 2 , location: 'BangKok',description: 'We will explore the cheap and delicious food from the streets',startDate: 20190522,endDate: 20190529});
+            db('Trips').insert({tripName: 'Street Food Adventures', userId: 2 , location: 'Hong Kong',description: 'We will explore the cheap and delicious food from the streets of Mong Kok',startDate: 20190522,endDate: 20190529});
+            db('Trips').insert({tripName: 'Street Food Adventures', userId: 1 , location: 'Tokyo', description: 'We will explore the cheap and delicious food from the streets of Shinjuku',startDate: 20190522,endDate: 20190529});
+            db('Trips').insert({tripName: 'Street Food Adventures', userId: 2 , location: 'Taipei',description: 'We will explore the cheap and delicious food from the streets of Shi Lim',startDate: 20190522,endDate: 20190529});
+            db('Trips').insert({tripName: 'Street Food Adventures', userId: 1 , location: 'Kuala Lumpar',description: 'We will explore the cheap and delicious food from the streets',startDate: 20190522,endDate: 20190529});
+            db('Trips').insert({tripName: 'Street Food Adventures', userId: 2 , location: 'BangKok',description: 'We will explore the cheap and delicious food from the streets',startDate: 20190522,endDate: 20190529});
 
 
             const response = await request(server).get('/api/trips').set('Authorization', `${token}`);
@@ -69,9 +82,9 @@ describe('trip_routers.js', () => {
             trips.addTrips({tripName: 'Street Food Adventures', userId: 1 , location: 'Tokyo', description: 'We will explore the cheap and delicious food from the streets of Shinjuku',startDate: 20190522,endDate: 20190529});
             trips.addTrips({tripName: 'Street Food Adventures', userId: 2 , location: 'Taipei',description: 'We will explore the cheap and delicious food from the streets of Shi Lim',startDate: 20190522,endDate: 20190529});
 
-            const response = await request(server).get(`/api/trips/2`).set('Authorization', `${token}`)
-
-            expect(response.body).toEqual({id: 2, tripName: 'Street Food Adventures', userId: 1 , location: 'Tokyo', description: 'We will explore the cheap and delicious food from the streets of Shinjuku',startDate: 20190522,endDate: 20190529})
+            const response = await request(server).get(`/api/trips/1`).set('Authorization', `${token}`)
+            //console.log(response)
+            expect(response.body).toEqual({id: 1, tripName: 'Street Food Adventures', userId: 1 , location: 'Tokyo', description: 'We will explore the cheap and delicious food from the streets of Shinjuku',startDate: 20190522,endDate: 20190529})
         })
     })
 
@@ -81,7 +94,7 @@ describe('trip_routers.js', () => {
                 tripName: 'Street Food Adventures', 
                 userId: 2 , 
                 location: 'Hong Kong',
-                description: 'We will explore the cheap and delicious food from the streets of Mong Kok',
+                description: 'We will explore ',
                 startDate: 20190522,
                 endDate: 20190529
             };
@@ -90,6 +103,8 @@ describe('trip_routers.js', () => {
               .post('/api/trips')
               .set('Authorization', `${token}`)
               .send(trip);
+
+            //console.log(response)
             expect(response.status).toBe(201);
           });
         

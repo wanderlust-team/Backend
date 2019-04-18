@@ -19,7 +19,7 @@ router.post("/register", (req, res) => {
     .catch(error => {
       res
         .status(500)
-        .json({ error, message: "User not registered.  Please try again" });
+        .json({ error, message: "User not registered.  Please try again, Please fill out all the fields" });
     });
 });
 
