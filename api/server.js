@@ -19,9 +19,10 @@ server.get('/', async (req, res) => {
   res.status(200).json({ api: 'up' });
 });
 
+//testing
 server.use('/api/auth', authRouter);
 server.use('/api/users', authenticate.authenticate, userRouter);
-server.use('/api/trips', tripRouter)
+server.use('/api/trips', authenticate.authenticate, tripRouter)
 
 
 module.exports = server;
