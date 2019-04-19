@@ -91,7 +91,7 @@ router.put('/:id', async (req, res) => {
     try {
       const tripUpdate = await Trips.editTrip(req.params.id, changes);
       if (tripUpdate) {
-        res.status(200).json(tripUpdate);
+        res.status(200).json({tripUpdate, message: 'User Has been updated'});
       } else {
         res.status(404).json({ message: 'The User could not be found' });
       }

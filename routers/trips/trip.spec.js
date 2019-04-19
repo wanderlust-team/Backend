@@ -152,4 +152,25 @@ describe('trip_routers.js', () => {
             expect(onlyTrip.body).toEqual({message: 'Trip has been deleted'})
         })
     })
+
+
+    describe('PUT /trips/:id', () => {
+        it('should respond with status 200', async () => {
+           await db('Trips').insert({tripName: 'Street Food Adventures', userId: 1 , location: 'wooo Kong',description: 'We will explore the cheap and delicious food from the streets of Mong Kok',startDate: 20190522,endDate: 20190529});
+
+            const response = await request(server).put('/api/trips/1').set('Authorization', `${token}`).send({tripName: 'Street Food Adventures', userId: 1 , location: 'Hong Kong',description: 'We will explore the cheap and delicious food from the streets of Mong Kok',startDate: 20190522,endDate: 20190529})
+
+            expect(response.status).toBe(200)    
+        })
+
+        it('should get message of trip updated', async () => {
+            trips.addTrips({tripName: 'Street Food Adventures', userId: 1 , location: 'woo Kong',description: 'We will explore the cheap and delicious food from the streets of Mong Kok',startDate: 20190522,endDate: 20190529});
+            trips.addTrips({tripName: 'Street Food Adventures', userId: 2 , location: 'Tokyo', description: 'We will explore the cheap and delicious food from the streets of Shinjuku',startDate: 20190522,endDate: 20190529});
+            
+            const onlyTrip = await request(server).put('/api/trips/1').set('Authorization', `${token}`).send({tripName: 'Street Food Adventures', userId: 1 , location: 'Hong Kong',description: 'We will explore the cheap and delicious food from the streets of Mong Kok',startDate: 20190522,endDate: 20190529});
+
+        
+            expect(onlyTrip.body).toEqual({tripUpdate: 1, message: 'User Has been updated'})
+        })
+    })
  })
